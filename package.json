@@ -9,12 +9,15 @@
     "lint": "next lint",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
-    "tunnel": "ngrok http 3000"
+    "tunnel": "ngrok http 3000",
+    "postinstall": "npm rebuild lightningcss",
+    "vercel-build": "npm rebuild --platform=linux --arch=x64 --target=18.17.0 && next build",
   },
   "dependencies": {
     "@clerk/nextjs": "^6.31.1",
     "@hookform/resolvers": "^5.2.1",
     "@neondatabase/serverless": "^1.0.1",
+    "@next/font": "^14.2.15",
     "@prisma/adapter-neon": "^6.15.0",
     "@prisma/client": "^6.14.0",
     "@radix-ui/react-avatar": "^1.1.10",
@@ -35,8 +38,9 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
+    "lightningcss": "^1.30.1",
     "lucide-react": "^0.539.0",
-    "next": "15.4.6",
+    "next": "^15.5.3",
     "next-themes": "^0.4.6",
     "prisma": "^6.14.0",
     "react": "19.1.0",
@@ -70,5 +74,8 @@
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
+  },
+  "engines": {
+    "node": ">=18.17.0"
   }
 }
