@@ -10,8 +10,7 @@
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "tunnel": "ngrok http 3000",
-    "postinstall": "npm rebuild lightningcss",
-    "vercel-build": "npm rebuild --platform=linux --arch=x64 --target=18.17.0 && next build"
+    "postinstall": "npm rebuild lightningcss"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.31.1",
