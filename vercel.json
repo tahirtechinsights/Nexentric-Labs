@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "installCommand": "npm install --force && prisma generate",
+  "buildCommand": "prisma migrate deploy && npm run build",
+  "functions": {
+    "app/api/**/*.js": {
+      "maxDuration": 30
+    }
+  }
+}

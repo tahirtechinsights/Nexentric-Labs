@@ -10,7 +10,8 @@
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "tunnel": "ngrok http 3000",
-    "postinstall": "npm rebuild lightningcss"
+    "postinstall": "npm rebuild lightningcss",
+    "migrate:deploy": "prisma migrate deploy"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.31.1",
