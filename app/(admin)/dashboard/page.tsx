@@ -170,20 +170,20 @@ const App = async () => {
           {/* Card 1: Invite Clients */}
           <div className="p-6 rounded-2xl border bg-card text-card-foreground shadow-sm bg-muted/30 border-dashed border-border/50">
             <h3 className="font-semibold text-lg sm:text-xl leading-tight mb-2">
-               Colloborate with Nexentric as developer new advance features.
+                Call for Developer Collaboration: Advanced Feature Development with Nexentric.
             </h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li className="flex items-start gap-2">
                 <span className="font-semibold text-primary">1.</span>
-                <span>If as developer you want to be a part of my team, send request email.</span>
+                <span>Express Interest: Submit your request via email to be considered for the development team.</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="font-semibold text-primary">2.</span>
-                <span>When I'll receive your email, I'll add you on github to colab in development.</span>
+                <span>Onboarding: Upon acceptance, you will be granted access to our GitHub repository to begin collaboration.</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="font-semibold text-primary">3.</span>
-                <span>You get rewarded on every new feature.</span>
+                <span>Get Rewarded: Contributors are financially rewarded for the successful development and implementation of each new feature.</span>
               </li>
             </ul>
             <div className="mt-6 flex flex-col sm:flex-row items-center gap-2">
