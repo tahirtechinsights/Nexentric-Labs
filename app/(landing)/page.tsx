@@ -450,24 +450,88 @@ const FinalCTA = () => {
   const router = useRouter();
   
   const handleGetStartedClick = () => {
-    router.push("/sign-up");
+    router.push("/dashboard");
+  };
+
+  const handleUpworkClick = () => {
+    window.open("https://www.upwork.com/freelancers/tahirtechinsights/", "Upwork");
+  };
+
+  const handleContraClick = () => {
+    window.open("https://tahirtechinsights.contra.com/", "Contra");
   };
 
   return (
     <section className="bg-slate-950 text-white py-20 px-4 md:px-8 text-center border-b border-gray-800">
       <div className="container mx-auto">
         <h2 className="text-3xl md:text-5xl font-bold mb-4">
-          Let&apos;s connects
+          Let&apos;s connect
         </h2>
         <p className="text-lg text-gray-400 max-w-2xl mx-auto mb-8">
           We can choose Contra or Upwork independent platforms for contract.
         </p>
-        <button
-          onClick={handleGetStartedClick}
-          className="py-3 px-8 rounded-full text-lg font-semibold bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 transition-all text-white shadow-lg"
-        >
-          Get Started
-        </button>
+        
+        <div className="flex flex-col md:flex-row justify-center items-center gap-8 mt-12">
+          {/* Upwork Card */}
+          <div 
+            className="relative group bg-slate-900/50 p-8 rounded-2xl border border-gray-800 hover:border-purple-500/50 transition-all duration-300 cursor-pointer transform hover:-translate-y-1 w-full max-w-sm"
+            onClick={handleUpworkClick}
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-indigo-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+            <div className="relative z-10">
+              <div className="mb-6 flex justify-center">
+                <Image
+                  src="/assets/upwork-logo.png" // Update with your Upwork logo path
+                  alt="Upwork"
+                  width={120}
+                  height={40}
+                  className="object-contain"
+                />
+              </div>
+              <p className="text-gray-300 mb-6">
+                Hire me on Upwork for secure contracting with built-in payment protection
+              </p>
+              <button className="py-2 px-6 rounded-full text-sm font-medium bg-[#14a800] hover:bg-[#108400] transition-all text-white">
+                View Upwork Profile
+              </button>
+            </div>
+          </div>
+
+          {/* Contra Card */}
+          <div 
+            className="relative group bg-slate-900/50 p-8 rounded-2xl border border-gray-800 hover:border-purple-500/50 transition-all duration-300 cursor-pointer transform hover:-translate-y-1 w-full max-w-sm"
+            onClick={handleContraClick}
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-indigo-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+            <div className="relative z-10">
+              <div className="mb-6 flex justify-center">
+                <Image
+                  src="/assets/Contra_Logo.png" // Update with your Contra logo path
+                  alt="Contra"
+                  width={120}
+                  height={40}
+                  className="object-contain"
+                />
+              </div>
+              <p className="text-gray-300 mb-6">
+                Work with me on Contra for commission-free independent collaborations
+              </p>
+              <button className="py-2 px-6 rounded-full text-sm font-medium bg-black hover:bg-gray-900 transition-all text-white border border-gray-700">
+                View Contra Profile
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-16">
+          <p className="text-gray-400 mb-6">Or get started directly with this platform</p>
+          <button
+            onClick={handleGetStartedClick}
+            className="py-3 px-8 rounded-full text-lg font-semibold bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 transition-all text-white shadow-lg"
+          >
+            Nexentric Lab
+          </button>
+        </div>
       </div>
     </section>
   );

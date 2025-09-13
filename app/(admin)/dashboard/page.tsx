@@ -123,7 +123,7 @@ const App = async () => {
               className="rounded-full"
             />
             <h1 className="font-semibold text-2xl sm:text-3xl">
-              Welcome, {displayName} 👋
+              Welcome, {displayName} 👋 to Nexentric Lab
             </h1>
           </div>
         </div>
@@ -170,20 +170,20 @@ const App = async () => {
           {/* Card 1: Invite Clients */}
           <div className="p-6 rounded-2xl border bg-card text-card-foreground shadow-sm bg-muted/30 border-dashed border-border/50">
             <h3 className="font-semibold text-lg sm:text-xl leading-tight mb-2">
-              Earn when you invite your client
+               Colloborate with Nexentric as developer new advance features.
             </h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li className="flex items-start gap-2">
                 <span className="font-semibold text-primary">1.</span>
-                <span>Invite clients to Contra via email, projects, and invoices.</span>
+                <span>If as developer you want to be a part of my team, send request email.</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="font-semibold text-primary">2.</span>
-                <span>Your client completes a $500+ project with any freelancer.</span>
+                <span>When I'll receive your email, I'll add you on github to colab in development.</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="font-semibold text-primary">3.</span>
-                <span>You get rewarded. Every single time! <Link href="#" className="underline text-primary">Learn more</Link></span>
+                <span>You get rewarded on every new feature.</span>
               </li>
             </ul>
             <div className="mt-6 flex flex-col sm:flex-row items-center gap-2">
@@ -191,13 +191,13 @@ const App = async () => {
                 <CircleUserRound className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" size={18} />
                 <Input
                   type="email"
-                  placeholder="client email address"
+                  placeholder="gthub email address"
                   className="pl-10 h-10 w-full rounded-full border-muted-foreground/20 focus:border-primary/50"
                 />
               </div>
               <div className="flex gap-2 w-full sm:w-auto mt-2 sm:mt-0">
                 <Button className="h-10 px-4 rounded-full bg-blue-600 hover:bg-blue-700 transition-colors font-medium w-full sm:w-auto">
-                  <SendHorizonal className="mr-2 h-4 w-4" /> Invite new client
+                  <SendHorizonal className="mr-2 h-4 w-4" /> Request
                 </Button>
                 <Button variant="outline" size="icon" className="h-10 w-10 shrink-0 rounded-full border-muted-foreground/20 hover:bg-muted">
                   <Copy className="h-4 w-4" />
@@ -234,7 +234,7 @@ const App = async () => {
         </div>
 
         {/* View All Link */}
-        <div className="mt-8">
+        {/* <div className="mt-8">
           <Link
             href="/companies"
             className="inline-flex items-center gap-2 transition-colors hover:text-fuchsia-500 text-lg font-medium"
@@ -242,7 +242,7 @@ const App = async () => {
             View all companies
             <span aria-hidden="true">→</span>
           </Link>
-        </div>
+        </div> */}
       </div>
     </section>
   );
