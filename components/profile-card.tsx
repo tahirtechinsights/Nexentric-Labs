@@ -19,8 +19,17 @@ import {
   Link as LinkIcon
 } from 'lucide-react';
 
+// Define a proper type for the category instead of using 'any'
+interface CompanyCategory {
+  id: string;
+  name: string;
+}
+
 type FullUser = User & {
-  company: (Company & { services: Service[]; category?: any }) | null;
+  company: (Company & { 
+    services: Service[]; 
+    category?: CompanyCategory | null;
+  }) | null;
   bio: Bio | null;
 };
 

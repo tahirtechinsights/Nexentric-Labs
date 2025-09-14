@@ -2,7 +2,7 @@
 'use server';
 
 import prisma from '@/lib/prisma';
-import { User, Bio } from '@prisma/client';
+import { User } from '@prisma/client';
 import { revalidatePath } from 'next/cache';
 
 export async function updateUserBio() {
@@ -76,7 +76,7 @@ export async function updateUserSocialLinks(userId: string, socialData: { xUrl?:
   }
 }
 
-export async function updateUserCompany(userId: string, companyData: Partial<Company>) {
+export async function updateUserCompany() {
   try {
     // This would need to be implemented based on your company update logic
     // For now, we'll just revalidate the path
