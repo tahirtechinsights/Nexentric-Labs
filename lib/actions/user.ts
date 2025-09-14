@@ -5,7 +5,7 @@ import prisma from '@/lib/prisma';
 import { User, Bio } from '@prisma/client';
 import { revalidatePath } from 'next/cache';
 
-export async function updateUserBio(userId: string, bioData: Partial<Bio>) {
+export async function updateUserBio() {
   try {
     // Prepare the data for create operation
     const createData = {

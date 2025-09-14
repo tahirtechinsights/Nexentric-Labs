@@ -1,7 +1,7 @@
 import { getAllCompanies as getCompanies } from '@/lib/companies'
 import Companies from '@/components/companies'
 import { getCategories } from '@/lib/categories'
-import { Card, CardContent } from '@/components/ui/card'
+import { Card } from '@/components/ui/card'
 import { Building2 } from 'lucide-react'
 
 export default async function CompaniesPage() {

@@ -7,7 +7,7 @@ import { updateUserSocialLinks } from '@/lib/actions/user';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Twitter, Linkedin } from 'lucide-react';
 
 export default function ProfileSocial({ initialUser }: { initialUser: User }) {

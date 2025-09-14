@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Plus, Trash2 } from 'lucide-react';
 
 type FullUser = User & {
@@ -17,7 +17,7 @@ type FullUser = User & {
 export default function ProfileCompany({ initialUser }: { initialUser: FullUser }) {
   const [user, setUser] = useState(initialUser);
   const [isEditing, setIsEditing] = useState(false);
-  const [isPending, startTransition] = useTransition();
+  const [isPending] = useTransition();
 
   const handleSave = () => {
     // This would call an API action to update company information
