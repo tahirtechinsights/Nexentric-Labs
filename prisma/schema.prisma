@@ -19,11 +19,34 @@ model User {
   xUrl        String?
   linkedInUrl String?
 
+  // Add the bio relationship
+  bio Bio?
+
   company     Company? @relation(fields: [companySlug], references: [slug])
   companySlug String?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+// New Bio model
+model Bio {
+  id String @id @default(cuid())
+
+  about                String?
+  totalYearsExperience Int?    @map("total_years_experience")
+  skillsAndTools       String? @map("skills_and_tools") // Could also be Json type if you want structured data
+  location             String?
+  hourlyRate           Float?  @map("hourly_rate")
+
+  // Relationship to User (one-to-one)
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String @unique
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("bios")
 }
 
 model Company {

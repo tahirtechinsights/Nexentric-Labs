@@ -294,13 +294,13 @@ const AboutCreator = () => (
           {/* Social links */}
           <div className="flex justify-center space-x-4 mt-8">
             <a
-              href="mailto:your.email@example.com"
+              href="tahirtechinsights@gmail.com"
               className="p-3 rounded-full bg-slate-800 hover:bg-slate-700 transition-colors text-gray-300 hover:text-white"
             >
               <Mail size={20} />
             </a>
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/tahirtechinsights/"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 rounded-full bg-slate-800 hover:bg-slate-700 transition-colors text-gray-300 hover:text-white"
@@ -308,7 +308,7 @@ const AboutCreator = () => (
               <Github size={20} />
             </a>
             <a
-              href="https://linkedin.com/in/yourprofile"
+              href="https://www.linkedin.com/in/tahirtechinsights/"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 rounded-full bg-slate-800 hover:bg-slate-700 transition-colors text-gray-300 hover:text-white"
@@ -316,7 +316,7 @@ const AboutCreator = () => (
               <Linkedin size={20} />
             </a>
             <a
-              href="https://yourportfolio.com"
+              href="https://tahirtechinsight.tech"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 rounded-full bg-slate-800 hover:bg-slate-700 transition-colors text-gray-300 hover:text-white"

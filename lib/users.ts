@@ -218,7 +218,31 @@ export async function searchCompanies(query: string) {
   }
 }
 
-// Add this new function to your existing lib/users.ts file
+// // Add this new function to your existing lib/users.ts file
+// export async function getUserProfile(clerkUserId: string) {
+//   try {
+//     const user = await prisma.user.findUnique({
+//       where: { clerkUserId },
+//       include: {
+//         company: {
+//           include: {
+//             services: true,
+//           },
+//         },
+//       },
+//     });
+
+//     if (!user) {
+//       return { error: 'User not found' };
+//     }
+
+//     return { user };
+//   } catch (error) {
+//     console.error('Error fetching user profile:', error);
+//     return { error };
+//   }
+// }
+
 export async function getUserProfile(clerkUserId: string) {
   try {
     const user = await prisma.user.findUnique({
@@ -227,18 +251,38 @@ export async function getUserProfile(clerkUserId: string) {
         company: {
           include: {
             services: true,
+            category: true, // Include category if needed
           },
         },
+        bio: true,
       },
     });
-
-    if (!user) {
-      return { error: 'User not found' };
-    }
-
-    return { user };
+    
+    return { user, error: null };
   } catch (error) {
     console.error('Error fetching user profile:', error);
-    return { error };
+    return { user: null, error: 'Failed to fetch user profile' };
+  }
+}
+
+// Add a simpler function for just the basic user data
+export async function getBasicUser(clerkUserId: string) {
+  try {
+    const user = await prisma.user.findUnique({
+      where: { clerkUserId },
+      select: {
+        id: true,
+        firstName: true,
+        lastName: true,
+        email: true,
+        imageUrl: true,
+        jobTitle: true,
+      },
+    });
+    
+    return { user, error: null };
+  } catch (error) {
+    console.error('Error fetching basic user:', error);
+    return { user: null, error: 'Failed to fetch user data' };
   }
 }

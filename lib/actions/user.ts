@@ -2,59 +2,89 @@
 'use server';
 
 import prisma from '@/lib/prisma';
-import { User, Prisma } from '@prisma/client';
+import { User, Bio } from '@prisma/client';
 import { revalidatePath } from 'next/cache';
 
-// Update a user's profile information
-export async function updateUserProfile(data: Partial<User>) {
-  const { clerkUserId, ...updateData } = data;
-
-  if (!clerkUserId) {
-    return { error: 'Authentication error: Clerk User ID not provided.' };
-  }
-
+export async function updateUserBio(userId: string, bioData: Partial<Bio>) {
   try {
-    const user = await prisma.user.update({
-      where: { clerkUserId },
-      data: updateData,
+    // Prepare the data for create operation
+    const createData = {
+      about: bioData.about || '',
+      totalYearsExperience: bioData.totalYearsExperience || 0,
+      skillsAndTools: bioData.skillsAndTools || '',
+      location: bioData.location || '',
+      hourlyRate: bioData.hourlyRate || 0,
+      userId: userId,
+    };
+
+    const updatedBio = await prisma.bio.upsert({
+      where: { userId },
+      update: bioData,
+      create: createData,
     });
-
-    // Revalidate the profile page to show the updated data
-    revalidatePath('/profile'); 
-
-    return { user };
+    
+    // Revalidate the profile page to reflect bio changes
+    revalidatePath('/profile');
+    
+    return { bio: updatedBio, error: null };
   } catch (error) {
-    console.error('Error updating user profile:', error);
-    return { error: 'Failed to update user profile.' };
+    console.error('Error updating bio:', error);
+    return { bio: null, error: 'Failed to update bio' };
   }
 }
 
-// Function to create a user (if needed for initial setup)
-export async function createNewUser(data: Partial<User>) {
+export async function updateUserProfile(userData: Partial<User>) {
   try {
-    // Create a properly typed object for Prisma create
-    const createData: Prisma.UserCreateInput = {
-      // Required fields with defaults if not provided
-      email: data.email || '',
-      clerkUserId: data.clerkUserId || '',
-      createdAt: data.createdAt || new Date(),
-      updatedAt: data.updatedAt || new Date(),
-      
-      // Optional fields - only include if they have values
-      ...(data.firstName && { firstName: data.firstName }),
-      ...(data.lastName && { lastName: data.lastName }),
-      ...(data.imageUrl && { imageUrl: data.imageUrl }),
-      ...(data.jobTitle && { jobTitle: data.jobTitle }),
-      ...(data.xUrl && { xUrl: data.xUrl }),
-      ...(data.linkedInUrl && { linkedInUrl: data.linkedInUrl }),
-      ...(data.companySlug && { companySlug: data.companySlug }),
-    };
-
-    const user = await prisma.user.create({ data: createData });
+    const updatedUser = await prisma.user.update({
+      where: { id: userData.id },
+      data: {
+        firstName: userData.firstName,
+        lastName: userData.lastName,
+        jobTitle: userData.jobTitle,
+        xUrl: userData.xUrl,
+        linkedInUrl: userData.linkedInUrl,
+      },
+    });
+    
+    // Revalidate the profile page to reflect changes
     revalidatePath('/profile');
-    return { user };
+    
+    return { user: updatedUser, error: null };
   } catch (error) {
-    console.error('Error creating user:', error);
-    return { error: 'Failed to create user.' };
+    console.error('Error updating user:', error);
+    return { user: null, error: 'Failed to update user' };
+  }
+}
+
+export async function updateUserSocialLinks(userId: string, socialData: { xUrl?: string; linkedInUrl?: string }) {
+  try {
+    const updatedUser = await prisma.user.update({
+      where: { id: userId },
+      data: {
+        xUrl: socialData.xUrl,
+        linkedInUrl: socialData.linkedInUrl,
+      },
+    });
+    
+    // Revalidate the profile page to reflect social link changes
+    revalidatePath('/profile');
+    
+    return { user: updatedUser, error: null };
+  } catch (error) {
+    console.error('Error updating social links:', error);
+    return { user: null, error: 'Failed to update social links' };
+  }
+}
+
+export async function updateUserCompany(userId: string, companyData: Partial<Company>) {
+  try {
+    // This would need to be implemented based on your company update logic
+    // For now, we'll just revalidate the path
+    revalidatePath('/profile');
+    
+    return { success: true, error: null };
+  } catch (error) {
+    console.error('Error updating company:', error);
+    return { success: false, error: 'Failed to update company' };
   }
 }
