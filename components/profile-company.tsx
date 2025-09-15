@@ -1,4 +1,3 @@
-// components/profile-company.tsx
 'use client';
 
 import { useState, useTransition } from 'react';
@@ -28,20 +27,45 @@ export default function ProfileCompany({ initialUser }: { initialUser: FullUser 
   const addService = () => {
     setUser(prev => ({
       ...prev,
-      company: prev.company ? {
-        ...prev.company,
-        services: [
-          ...prev.company.services,
-          {
-            id: `temp-${Date.now()}`,
-            name: '',
-            description: '',
-            companyId: prev.company?.id || '',
+      company: prev.company
+        ? {
+            ...prev.company,
+            services: [
+              ...prev.company.services,
+              {
+                id: `temp-${Date.now()}`,
+                name: '',
+                description: '',
+                companyId: prev.company?.id || '',
+                createdAt: new Date(),
+                updatedAt: new Date(),
+              }
+            ]
+          }
+        : {
+            // If no company exists, create one with default values
+            id: '',
+            email: null,
             createdAt: new Date(),
             updatedAt: new Date(),
-          }
-        ]
-      } : null
+            name: 'New Company',
+            slug: '',
+            tagline: null,
+            description: null,
+            phone: null,
+            website: null,
+            categoryId: '',
+            services: [
+              {
+                id: `temp-${Date.now()}`,
+                name: '',
+                description: '',
+                companyId: '',
+                createdAt: new Date(),
+                updatedAt: new Date(),
+              },
+            ],
+          },
     }));
   };
 
@@ -61,7 +85,7 @@ export default function ProfileCompany({ initialUser }: { initialUser: FullUser 
       company: prev.company ? {
         ...prev.company,
         services: prev.company.services.map((service, i) => 
-          i === index ? { ...service, [field]: value } : service
+          i === index ? { ...service, [field]: value, updatedAt: new Date() } : service
         )
       } : null
     }));
@@ -70,18 +94,26 @@ export default function ProfileCompany({ initialUser }: { initialUser: FullUser 
   const handleCompanyChange = (field: keyof Company, value: string) => {
     setUser(prev => ({
       ...prev,
-      company: prev.company ? {
-        ...prev.company,
-        [field]: value
-      } : {
-        id: '',
-        name: '',
-        slug: '',
-        categoryId: '',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-        [field]: value
-      } as Company
+      company: prev.company
+        ? {
+            ...prev.company,
+            [field]: value,
+            updatedAt: new Date(),
+          }
+        : {
+            id: '',
+            email: null,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+            name: field === 'name' ? value : '',
+            slug: '',
+            tagline: null,
+            description: null,
+            phone: null,
+            website: null,
+            categoryId: '',
+            services: [], // Add the missing services array
+          },
     }));
   };
 

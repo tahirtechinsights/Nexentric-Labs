@@ -1,11 +1,16 @@
-// lib/actions/user.ts
 'use server';
 
 import prisma from '@/lib/prisma';
 import { User } from '@prisma/client';
 import { revalidatePath } from 'next/cache';
 
-export async function updateUserBio() {
+export async function updateUserBio(userId: string, bioData: {
+  about: string;
+  totalYearsExperience: number;
+  skillsAndTools: string;
+  location: string;
+  hourlyRate: number;
+}) {
   try {
     // Prepare the data for create operation
     const createData = {
